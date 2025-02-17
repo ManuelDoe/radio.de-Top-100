@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Radio Station Aggregator - Machbarkeitsbewertung und Umfangsdefinition
 
-## Getting Started
+## 1. Projektumfang & Technologien
 
-First, run the development server:
+Entwicklung einer Radio-Station-Aggregator-App mit folgenden Technologien:
+- React (Next.js)
+- TypeScript
+- Tailwind CSS
+- ShadCN
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Der Schwerpunkt liegt auf modernem UI/UX-Design und responsiver Darstellung für verschiedene Bildschirmgrößen.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 2. Geplante Features & Umsetzung
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### ✅ Basis-Funktionalitäten
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Startseite:**
+- Anzeige der Top 100 Radiosender
+- Darstellung von Name, Logo und Genre
+- Übersichtliche Listendarstellung
 
-## Learn More
+**Detailseite:**
+- Erweiterte Senderinformationen
+  - Name und Logo
+  - Genre
+  - Beschreibung
+  - Streaming-URL
+- "Ähnliche Sender" Komponente
+  - Anzeige verwandter Sender basierend auf dem Genre
+  - Dynamische Aktualisierung bei Genreauswahl
 
-To learn more about Next.js, take a look at the following resources:
+**Such- und Filterfunktionen:**
+- Sendersuche nach Namen
+- Genre-Filter (ShadCN-Komponenten)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### ✅ Zusätzliche Funktionen
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Streaming-Player-Komponente:**
+- Integration in Übersichts- und Detailseite
+- Kernfunktionen:
+  - Stream-Steuerung (Start/Pause)
+  - Lautstärkeregelung
+  - Stream-/Titelanzeige
 
-## Deploy on Vercel
+### ✅ Styling & UX-Fokus
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Modernes Design durch Tailwind CSS & ShadCN
+- Responsive Design-Implementierung
+- Animationen für bessere Nutzerinteraktion
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### ✅ Technischer Workflow
+
+**1. Projekt-Setup:**
+- Next.js-Projekterstellung
+- Tailwind CSS & ShadCN-Integration
+
+**2. API-Integration:**
+- API-Analyse
+- Implementierung der Datenabrufe
+
+**3. Komponentenentwicklung:**
+- UI-Komponenten (Start-/Detailseite)
+- Such- und Filterfunktionen
+- Streaming-Player
+
+**4. Finalisierung:**
+- Responsive Optimierung
+- Effekte & Animationen
+- Basis-Testing
+
+### ❌ Nicht im Scope
+
+- Dockerisierung
+- Erweiterte Server-seitige Verarbeitung
+
+## 3. Herausforderungen & Fokusbereiche
+
+### ⚠️ Herausforderungen
+
+**TypeScript:**
+- Begrenzte Erfahrung
+- Fokus auf korrekte Typisierung von:
+  - Props
+  - States
+  - API-Daten
+
+**Server-seitige Verarbeitung:**
+- Konzentration auf essenzielle Funktionen
+- Schrittweise Implementierung
+
+### ✅ Hauptfokus
+
+1. Modernes, attraktives Design
+2. Intuitive Nutzerführung
+3. Interaktive Effekte
+4. Robuste Player-Komponente
+
+---
+
+*Dieses Dokument wird kontinuierlich aktualisiert, um den Projektfortschritt und eventuelle Änderungen zu reflektieren.*
