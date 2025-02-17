@@ -4,13 +4,18 @@ import StreamPlayer from "@/app/[id]/StreamPlayer";
 import {getStations} from "@/lib/StationsCache";
 import InfoItem from "@/app/[id]/InfoItem";
 
-interface PageProps {
-    params: { id: string };
+interface GeneratedPageProps {
+    params: Promise<{
+        id: string;
+    }>;
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export default async function StreamDetail({params}: PageProps) {
+async function StreamDetail({ params, searchParams }: GeneratedPageProps) {
     try {
-        const {id} = params;
+        const resolvedParams = await params;
+        const resolvedSearchParams = await searchParams;
+        const { id } = resolvedParams;
         const cleanId = id.startsWith('@') ? id.slice(1) : id;
 
         const response = await fetch(`http://localhost:3000/api?stationId=${cleanId}`);
@@ -84,9 +89,7 @@ export default async function StreamDetail({params}: PageProps) {
                 )}
                 <Link href="/" className="text-[#50cd32] hover:underline mb-4 inline-block">&larr; Zurück zu den Top
                     100</Link>
-
             </div>
-
         );
     } catch (error) {
         console.error('Error fetching station data:', error);
@@ -99,3 +102,5 @@ export default async function StreamDetail({params}: PageProps) {
         );
     }
 }
+
+export default StreamDetail;
