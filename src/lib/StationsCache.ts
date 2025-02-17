@@ -1,11 +1,10 @@
-import { Station } from "@/app/Types/Station";
+import {Station} from "@/app/Types/Station";
 
 export async function getStations(): Promise<Station[]> {
     try {
-        console.log('Starte Datenabruf...');
-        const response = await fetch('http://localhost:3000/api/', {
-            cache: 'no-store',
+        const response = await fetch('https://prod.radio-api.net/stations/list-by-system-name?systemName=STATIONS_TOP&count=100', {
             headers: {
+                'Accept-Language': 'de-DE',
                 'Content-Type': 'application/json',
             },
         });
@@ -16,23 +15,44 @@ export async function getStations(): Promise<Station[]> {
         }
 
         const data = await response.json();
-        let stations: Station[];
 
-        if (Array.isArray(data)) {
-            console.log('Daten sind ein Array mit', data.length, 'Elementen');
-            stations = data;
-        } else if (data.playables && Array.isArray(data.playables)) {
-            console.log('Daten haben ein playables Array mit', data.playables.length, 'Elementen');
-            stations = data.playables;
-        } else {
-            console.error('Unerwartetes Datenformat:', typeof data, Object.keys(data));
+        if (!data.playables || !Array.isArray(data.playables)) {
+            console.error('Unerwartetes Datenformat von der externen API');
             return [];
         }
 
+        const stations: Station[] = data.playables;
         console.log('Verarbeitete Stationen:', stations.length);
         return stations;
     } catch (error) {
         console.error('Fehler beim Abrufen der Stationen:', error);
         return [];
+    }
+}
+
+export async function getStationById(stationId: string): Promise<Station | null> {
+    try {
+        const response = await fetch(`https://prod.radio-api.net/stations/details?stationIds=${stationId}`, {
+            headers: {
+                'Accept-Language': 'de-DE',
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            console.error('Fehler beim Abrufen der Stationsdaten. Status:', response.status);
+            return null;
+        }
+
+        const data = await response.json();
+        if (!Array.isArray(data) || data.length === 0) {
+            console.error('Unerwartetes Datenformat oder keine Station gefunden');
+            return null;
+        }
+
+        return data[0] as Station;
+    } catch (error) {
+        console.error('Fehler beim Abrufen der Stationsdaten:', error);
+        return null;
     }
 }

@@ -1,9 +1,8 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import StreamPlayer from "@/app/[id]/StreamPlayer";
-import {getStations} from "@/lib/StationsCache";
+import { getStationById, getStations } from "@/lib/StationsCache";
+import Link from "next/link";
 import InfoItem from "@/app/[id]/InfoItem";
-
+import StreamPlayer from "@/app/[id]/StreamPlayer";
+import Image from "next/image";
 interface GeneratedPageProps {
     params: Promise<{
         id: string;
@@ -11,19 +10,13 @@ interface GeneratedPageProps {
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-async function StreamDetail({ params, searchParams }: GeneratedPageProps) {
+async function StreamDetail({ params }: GeneratedPageProps) {
     try {
         const resolvedParams = await params;
-        const resolvedSearchParams = await searchParams;
         const { id } = resolvedParams;
         const cleanId = id.startsWith('@') ? id.slice(1) : id;
 
-        const response = await fetch(`http://localhost:3000/api?stationId=${cleanId}`);
-        if (!response.ok) {
-            throw new Error('Fehler beim Abrufen der Stationsdaten');
-        }
-        const stationData = await response.json();
-        const station = stationData[0];
+        const station = await getStationById(cleanId);
 
         if (!station) {
             return (
