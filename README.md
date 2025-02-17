@@ -36,11 +36,10 @@ Der Schwerpunkt liegt auf modernem UI/UX-Design und responsiver Darstellung für
 ### ✅ Zusätzliche Funktionen
 
 **Streaming-Player-Komponente:**
-- Integration in Übersichts- und Detailseite
+- Integration in Detailseite
 - Kernfunktionen:
   - Stream-Steuerung (Start/Pause)
   - Lautstärkeregelung
-  - Stream-/Titelanzeige
 
 ### ✅ Styling & UX-Fokus
 
@@ -71,7 +70,6 @@ Der Schwerpunkt liegt auf modernem UI/UX-Design und responsiver Darstellung für
 ### ❌ Nicht im Scope
 
 - Dockerisierung
-- Erweiterte Server-seitige Verarbeitung
 
 ## 3. Herausforderungen & Fokusbereiche
 
@@ -93,7 +91,6 @@ Der Schwerpunkt liegt auf modernem UI/UX-Design und responsiver Darstellung für
 1. Modernes, attraktives Design
 2. Intuitive Nutzerführung
 3. Interaktive Effekte
-4. Robuste Player-Komponente
 
 ---
 
