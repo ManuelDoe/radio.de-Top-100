@@ -1,5 +1,6 @@
 import { columns, StationsData } from "./columns"
 import { DataTable } from "./data-table"
+import { Station } from "@/app/Types/Station"
 
 async function getStations(): Promise<StationsData[]> {
     try {
@@ -12,7 +13,7 @@ async function getStations(): Promise<StationsData[]> {
         }
 
         const data = await response.json();
-        return data.playables.map((station: any) => ({
+        return data.playables.map((station: Station) => ({
             id: station.id,
             name: station.name,
             logo100x100: station.logo100x100,

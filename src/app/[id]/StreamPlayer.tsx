@@ -10,16 +10,6 @@ const StreamPlayer: FC<StreamPlayerProps> = ({ streamUrl, stationName }) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef<HTMLAudioElement>(null);
 
-    const handlePlayPause = () => {
-        if (audioRef.current) {
-            if (isPlaying) {
-                audioRef.current.pause();
-            } else {
-                audioRef.current.play();
-            }
-            setIsPlaying(!isPlaying);
-        }
-    };
     return (
         <div className="bg-[#50cd32] p-4 rounded-lg h-40 max-lg:my-4">
             <h3 className="text-lg font-semibold mb-2">Jetzt streamen!</h3>
