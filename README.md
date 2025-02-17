@@ -1,4 +1,4 @@
-# Radio Station Aggregator - Machbarkeitsbewertung und Umfangsdefinition
+# Radio Station Aggregator
 
 ## 1. Projektumfang & Technologien
 
