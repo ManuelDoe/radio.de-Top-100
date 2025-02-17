@@ -49,28 +49,30 @@ async function StreamDetail({ params }: GeneratedPageProps) {
                     </div>
                     <div className="md:w-2/3 md:pl-6 flex flex-col justify-between">
                         <div>
-                            <InfoItem label="Stadt" value={station.city} />
-                            <InfoItem label="Land" value={station.country} />
-                            <InfoItem label="Genres" value={station.genres} />
-                            <InfoItem value={station.shortDescription} />
+                            <InfoItem label="Stadt" value={station.city}/>
+                            <InfoItem label="Genres" value={station.genres}/>
+                            <InfoItem value={station.shortDescription}/>
                         </div>
                         {station.streams && station.streams.length > 0 && (
                             <StreamPlayer streamUrl={station.streams[0].url} stationName={station.name}/>
                         )}
                     </div>
                 </div>
-                <InfoItem value={station.description} className="max-lg:my-4 my-12"/>
+                <h2 className="text-[#50cd32] text-3xl font-bold my-4 lg:mt-8 lg:mb-4">Über {station.name}</h2>
+                <InfoItem value={station.description} className="max-lg:mb-4"/>
                 {similarStations.length > 0 ? (
-                    <div className="my-6">
-                        <h2 className="text-2xl text-center font-bold my-6">Ähnliche Sender die Ihnen auch gefallen
+                    <div className="my-6 lg:my-12">
+                        <h2 className="text-3xl text-[#50cd32] text-center font-bold my-6 lg:my-12">Ähnliche Sender die Ihnen auch
+                            gefallen
                             könnten</h2>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                             {similarStations.map((similarStation) => (
                                 <Link href={`/${similarStation.id}`} key={similarStation.id}
-                                      className="text-center hover:opacity-80">
+                                      className="text-center hover:text-[#50cd32] group transition-all duration-300">
                                     {similarStation.logo100x100 && (
                                         <Image src={similarStation.logo100x100} alt={similarStation.name} width={100}
-                                               height={100} className="rounded-lg mx-auto"/>
+                                               height={100}
+                                               className="rounded-lg mx-auto group-hover:scale-[1.05] transition-all duration-300"/>
                                     )}
                                     <p className="mt-2">{similarStation.name}</p>
                                 </Link>

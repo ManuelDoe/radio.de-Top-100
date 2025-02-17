@@ -19,12 +19,13 @@ export const columns: ColumnDef<StationsData>[] = [
         accessorKey: "logo100x100",
         header: "",
         cell: ({ row }) => {
+            const station = row.original;
             const value = row.getValue('logo100x100') as string;
             const valueName = row.getValue('name') as string;
             return(
-                <div className="flex items-center justify-center">
+                <Link href={`/${station.id}`} className="flex items-center justify-center">
                     <Image src={value} alt={valueName} width={100} height={100} className="rounded-lg hover:scale-[1.05] transition-all duration-300"/>
-                </div>
+                </Link>
             )
         }
     },
